@@ -2,6 +2,7 @@ import React from "react";
 import Header from "./Header";
 import "./ExpenseTrackerApp.css";
 import Balance from "./Balance";
+import IncomeExpenses from "./IncomeExpenses";
 
 function ExpenseTrackerApp() {
   return (
@@ -9,6 +10,7 @@ function ExpenseTrackerApp() {
       <Header />
       <div className="container">
         <Balance />
+        <IncomeExpenses />
       </div>
     </div>
   );
