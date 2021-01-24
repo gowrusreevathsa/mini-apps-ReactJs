@@ -3,6 +3,8 @@ import Header from "./Header";
 import "./ExpenseTrackerApp.css";
 import Balance from "./Balance";
 import IncomeExpenses from "./IncomeExpenses";
+import TransactionList from "./TransactionList";
+import AddTransaction from "./AddTransaction";
 
 function ExpenseTrackerApp() {
   return (
@@ -11,6 +13,8 @@ function ExpenseTrackerApp() {
       <div className="container">
         <Balance />
         <IncomeExpenses />
+        <TransactionList />
+        <AddTransaction />
       </div>
     </div>
   );
