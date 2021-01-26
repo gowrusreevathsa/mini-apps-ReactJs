@@ -29,12 +29,24 @@ class CalculatorApp extends Component {
     });
   };
 
+  addZeroToInput = (val) => {
+    if (this.state.input !== "") {
+      this.setState({
+        input: this.state.input + val,
+      });
+    }
+  };
+
   render() {
     let buttons = this.buttonsArr.map((row) => {
       return (
         <div className="row">
           {row.map((item) => {
-            return <Button handleClick={this.addToInput}>{item}</Button>;
+            if (item === 0) {
+              return <Button handleClick={this.addZeroToInput}>{item}</Button>;
+            } else {
+              return <Button handleClick={this.addToInput}>{item}</Button>;
+            }
           })}
         </div>
       );

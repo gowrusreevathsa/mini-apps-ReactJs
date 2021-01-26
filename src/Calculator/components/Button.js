@@ -6,6 +6,7 @@ function Button(props) {
     return !isNaN(val) || (val === ".") | (val === "=");
   };
 
+  console.log(`Button ${props.children} created`);
   return (
     <div
       className={`button ${isOperator(props.children) ? null : "operator"}`}
@@ -16,4 +17,4 @@ function Button(props) {
   );
 }
 
-export default Button;
+export default React.memo(Button);
