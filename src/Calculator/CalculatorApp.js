@@ -31,7 +31,6 @@ class CalculatorApp extends Component {
     } else if (val === ".") {
       return this.addDecimalToInput(val);
     } else if (this.operatorArr.indexOf(val) != -1) {
-      console.log(val);
       return this.addOperator(val);
     } else if (val === "=") {
       return this.evaluate();
@@ -66,20 +65,18 @@ class CalculatorApp extends Component {
     }
   };
 
-  add = () => {
-    this.setState((prevState) => ({
-      previousNumber: prevState.input,
-      input: "",
-      operator: "plus",
-    }));
-  };
-
   addOperator = (val) => {
-    this.setState((prevState) => ({
-      previousNumber: prevState.input,
-      input: "",
-      operator: val,
-    }));
+    if (this.state.operator !== "") {
+      this.setState((prevState) => ({
+        operator: val,
+      }));
+    } else {
+      this.setState((prevState) => ({
+        previousNumber: prevState.input,
+        input: "",
+        operator: val,
+      }));
+    }
   };
 
   evaluate = () => {
@@ -88,24 +85,28 @@ class CalculatorApp extends Component {
         this.setState((prev) => ({
           currentNumber: prev.input,
           input: parseFloat(prev.previousNumber) + parseFloat(prev.input),
+          operator: "",
         }));
         break;
       case "-":
         this.setState((prev) => ({
           currentNumber: prev.input,
           input: parseFloat(prev.previousNumber) - parseFloat(prev.input),
+          operator: "",
         }));
         break;
       case "*":
         this.setState((prev) => ({
           currentNumber: prev.input,
           input: parseFloat(prev.previousNumber) * parseFloat(prev.input),
+          operator: "",
         }));
         break;
       case "/":
         this.setState((prev) => ({
           currentNumber: prev.input,
           input: parseFloat(prev.previousNumber) / parseFloat(prev.input),
+          operator: "",
         }));
         break;
     }
