@@ -1,11 +1,12 @@
 .home-container {
-  /* TODO */
+  display: flex;
 }
 
 .home-container .btn {
   border: none;
   height: 150px;
   width: 150px;
+  margin: 15px;
   padding: 32px;
   font-size: 16px;
   cursor: pointer;
@@ -21,10 +22,34 @@
   font-weight: 400;
 }
 
-.home-container .blue {
+.blue {
   background-color: #1976d2;
 }
 
-.home-container .blue:hover {
+.blue:hover {
   background-color: #03a9f4;
+}
+
+.teal {
+  background-color: #00796b;
+}
+
+.teal:hover {
+  background-color: #009688;
+}
+
+.green {
+  background-color: #388e3c;
+}
+
+.green:hover {
+  background-color: #4caf50;
+}
+
+.yellow {
+  background-color: #ffc107;
+}
+
+.yellow:hover {
+  background-color: #ffeb3b;
 }
