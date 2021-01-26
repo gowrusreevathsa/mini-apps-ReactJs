@@ -23,6 +23,20 @@ class CalculatorApp extends Component {
     };
   }
 
+  handleButtonClick = (val) => {
+    if (val === 0) {
+      return this.addZeroToInput(val);
+    } else if (val === ".") {
+      return this.addDecimalToInput(val);
+    } 
+    else if (val === '+'){
+        return this.add();
+    }
+    else {
+      return this.addToInput(val);
+    }
+  };
+
   addToInput = (val) => {
     this.setState({
       input: this.state.input + val,
@@ -37,16 +51,45 @@ class CalculatorApp extends Component {
     }
   };
 
+  addDecimalToInput = (val) => {
+    if (this.state.input === "") {
+      this.setState({
+        input: 0 + val,
+      });
+    } else if (this.state.input.indexOf(".") === -1) {
+      this.setState({
+        input: this.state.input + val,
+      });
+    }
+  };
+
+  add = () => {
+      this.setState((prevState) => {
+          previousNumber: prevState.input,
+          input: "",
+          operator: "plus"
+      })
+  }
+
+  clearInput = () => {
+    this.setState({ input: "" });
+  };
+
   render() {
     let buttons = this.buttonsArr.map((row) => {
       return (
         <div className="row">
           {row.map((item) => {
-            if (item === 0) {
-              return <Button handleClick={this.addZeroToInput}>{item}</Button>;
-            } else {
-              return <Button handleClick={this.addToInput}>{item}</Button>;
-            }
+            return <Button handleClick={this.handleButtonClick}>{item}</Button>;
+            // if (item === 0) {
+            //   return <Button handleClick={this.addZeroToInput}>{item}</Button>;
+            // } else if (item === ".") {
+            //   return (
+            //     <Button handleClick={this.addDecimalToInput}>{item}</Button>
+            //   );
+            // } else {
+            //   return <Button handleClick={this.addToInput}>{item}</Button>;
+            // }
           })}
         </div>
       );
@@ -60,7 +103,7 @@ class CalculatorApp extends Component {
           </div>
           {buttons}
           <div className="row">
-            <ClearButton>Clear</ClearButton>
+            <ClearButton handleClear={this.clearInput}>Clear</ClearButton>
           </div>
         </div>
       </div>
