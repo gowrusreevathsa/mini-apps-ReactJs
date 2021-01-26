@@ -9,4 +9,11 @@
   outline: 1px solid #888888;
   height: 4em;
   background-color: #c5c3cd;
+  cursor: pointer;
+  transition: 0.1s ease-in;
+}
+
+.clear-btn:hover {
+  font-weight: 600;
+  background-color: rgb(205, 206, 207);
 }

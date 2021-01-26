@@ -128,14 +128,17 @@ class CalculatorApp extends Component {
     });
 
     return (
-      <div className-="app">
-        <div className="calc-wrapper">
-          <div className="row">
-            <Input>{this.state.input}</Input>
-          </div>
-          {buttons}
-          <div className="row">
-            <ClearButton handleClear={this.clearInput}>Clear</ClearButton>
+      <div className="app-container">
+        <h1>Simple Calculator</h1>
+        <div className="app">
+          <div className="calc-wrapper">
+            <div className="row">
+              <Input>{this.state.input}</Input>
+            </div>
+            {buttons}
+            <div className="row">
+              <ClearButton handleClear={this.clearInput}>Clear</ClearButton>
+            </div>
           </div>
         </div>
       </div>

@@ -15,3 +15,9 @@
   display: flex;
   width: 100%;
 }
+
+.app-container h1 {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}

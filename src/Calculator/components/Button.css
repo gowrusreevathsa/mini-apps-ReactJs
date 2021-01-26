@@ -6,12 +6,25 @@
   align-items: center;
   font-weight: lighter;
   font-size: 1.4em;
-  background-color: #e0e1e6;
+  background-color: rgb(224, 225, 230);
   color: #888888;
   outline: 1px solid #888888;
+  cursor: pointer;
+  transition: 0.1s ease;
 }
 
 .operator {
   background-color: #fe9241;
+  color: #ffffff;
+}
+
+.button:hover {
+  background-color: rgb(205, 206, 207);
+  color: #000000;
+  font-weight: 600;
+}
+
+.operator:hover {
+  background-color: rgba(254, 146, 65, 0.6);
   color: #ffffff;
 }
