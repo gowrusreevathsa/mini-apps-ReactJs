@@ -28,11 +28,11 @@ class CalculatorApp extends Component {
       return this.addZeroToInput(val);
     } else if (val === ".") {
       return this.addDecimalToInput(val);
-    } 
-    else if (val === '+'){
-        return this.add();
-    }
-    else {
+    } else if (val === "+") {
+      return this.add();
+    } else if (val === "=") {
+      return this.evaluate();
+    } else {
       return this.addToInput(val);
     }
   };
@@ -64,12 +64,22 @@ class CalculatorApp extends Component {
   };
 
   add = () => {
-      this.setState((prevState) => {
-          previousNumber: prevState.input,
-          input: "",
-          operator: "plus"
-      })
-  }
+    this.setState((prevState) => ({
+      previousNumber: prevState.input,
+      input: "",
+      operator: "plus",
+    }));
+  };
+
+  evaluate = () => {
+    switch (this.state.operator) {
+      case "plus":
+        this.setState((prev) => ({
+          currentNumber: prev.input,
+          input: parseFloat(prev.previousNumber) + parseFloat(prev.input),
+        }));
+    }
+  };
 
   clearInput = () => {
     this.setState({ input: "" });
