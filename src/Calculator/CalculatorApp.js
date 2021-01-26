@@ -15,6 +15,8 @@ class CalculatorApp extends Component {
       [".", 0, "=", "-"],
     ];
 
+    this.operatorArr = ["+", "-", "*", "/"];
+
     this.state = {
       input: "",
       previousNumber: "",
@@ -28,8 +30,9 @@ class CalculatorApp extends Component {
       return this.addZeroToInput(val);
     } else if (val === ".") {
       return this.addDecimalToInput(val);
-    } else if (val === "+") {
-      return this.add();
+    } else if (this.operatorArr.indexOf(val) != -1) {
+      console.log(val);
+      return this.addOperator(val);
     } else if (val === "=") {
       return this.evaluate();
     } else {
@@ -71,13 +74,40 @@ class CalculatorApp extends Component {
     }));
   };
 
+  addOperator = (val) => {
+    this.setState((prevState) => ({
+      previousNumber: prevState.input,
+      input: "",
+      operator: val,
+    }));
+  };
+
   evaluate = () => {
     switch (this.state.operator) {
-      case "plus":
+      case "+":
         this.setState((prev) => ({
           currentNumber: prev.input,
           input: parseFloat(prev.previousNumber) + parseFloat(prev.input),
         }));
+        break;
+      case "-":
+        this.setState((prev) => ({
+          currentNumber: prev.input,
+          input: parseFloat(prev.previousNumber) - parseFloat(prev.input),
+        }));
+        break;
+      case "*":
+        this.setState((prev) => ({
+          currentNumber: prev.input,
+          input: parseFloat(prev.previousNumber) * parseFloat(prev.input),
+        }));
+        break;
+      case "/":
+        this.setState((prev) => ({
+          currentNumber: prev.input,
+          input: parseFloat(prev.previousNumber) / parseFloat(prev.input),
+        }));
+        break;
     }
   };
 
@@ -91,15 +121,6 @@ class CalculatorApp extends Component {
         <div className="row">
           {row.map((item) => {
             return <Button handleClick={this.handleButtonClick}>{item}</Button>;
-            // if (item === 0) {
-            //   return <Button handleClick={this.addZeroToInput}>{item}</Button>;
-            // } else if (item === ".") {
-            //   return (
-            //     <Button handleClick={this.addDecimalToInput}>{item}</Button>
-            //   );
-            // } else {
-            //   return <Button handleClick={this.addToInput}>{item}</Button>;
-            // }
           })}
         </div>
       );
