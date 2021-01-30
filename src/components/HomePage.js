@@ -11,6 +11,9 @@ function HomePage() {
       <Link to="/calculator">
         <button class="btn blue">Calculator</button>
       </Link>
+      <Link to="/tic-tac-toe">
+        <button class="btn blue">Tic-Tac-Toe</button>
+      </Link>
     </div>
   );
 }

@@ -5,6 +5,7 @@ import ExpenseTrackerApp from "./ExpenseTracker/components/ExpenseTrackerApp";
 import HomePage from "./components/HomePage";
 import CalculatorApp from "./Calculator/CalculatorApp";
 import ColorCodesApp from "./ColorCodes/ColorCodesApp";
+import TicTacToeApp from "./TicTacToe/TicTacToeApp";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/expense-tracker" exact component={ExpenseTrackerApp} />
         <Route path="/calculator" exact component={CalculatorApp} />
         <Route path="/color-codes" exact component={ColorCodesApp} />
+        <Route path="/tic-tac-toe" exact component={TicTacToeApp} />
       </Switch>
     </Router>
   );

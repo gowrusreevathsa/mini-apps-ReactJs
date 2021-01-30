@@ -6,17 +6,32 @@ function Input(props) {
   const [Rgb, setRgb] = useState("");
   const [Hsl, setHsl] = useState("");
 
-  useEffect(() => {
-    document.getElementsByTagName("body")[0].style.backgroundColor = "red";
-  }, [Hex]);
+  const setBgColor = (val) => {
+    if (val.length !== 7) {
+      val += "000000";
+      val = val.slice(0, 7);
+    }
+    document.getElementsByTagName("body")[0].style.backgroundColor = val;
+  };
+
+  const componentToHex = (val) => {
+    let hex = val.toString(16);
+    return hex.length == 1 ? "0" + hex : hex;
+  };
+
+  const rgbToHex = (r, g, b) => {
+    return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+  };
 
   const changeColor = (e) => {
     let target = e.target.placeholder;
 
     if (target === "HEX") {
       setHex(e.target.value);
+      setBgColor("#" + e.target.value);
     } else if (target === "RGB") {
       setRgb(e.target.value);
+      console.log(rgbToHex(e.target.value));
     } else {
       setHex(e.target.value);
     }
