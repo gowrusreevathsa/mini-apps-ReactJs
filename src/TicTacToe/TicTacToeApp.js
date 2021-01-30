@@ -1,7 +1,8 @@
 import React from "react";
+import Game from "./components/Game";
 
 function TicTacToeApp() {
-  return <div>Test</div>;
+  return <Game />;
 }
 
 export default TicTacToeApp;
